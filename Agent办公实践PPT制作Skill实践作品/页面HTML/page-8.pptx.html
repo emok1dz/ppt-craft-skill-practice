@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.digitalhumanai.top/slidagent/pptx-craft/assets/vendors/tailwind.js"></script>
+  <link href="https://cdn.digitalhumanai.top/slidagent/pptx-craft/assets/css/fonts.css" rel="stylesheet">
+  <link href="https://cdn.digitalhumanai.top/slidagent/pptx-craft/assets/vendors/fontawesome/css/all.min.css" rel="stylesheet">
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .ppt-slide { @apply relative w-[1280px] h-[720px] mx-auto box-border overflow-hidden; }
+      .ppt-slide *, .ppt-slide *::before, .ppt-slide *::after { @apply box-border; max-width: 100%; }
+      .ppt-slide img, .ppt-slide video, .ppt-slide canvas, .ppt-slide svg,
+      .ppt-slide .echarts-main, .ppt-slide .chart-container, .ppt-slide [id*="chart" i] {
+        @apply max-w-full max-h-full object-contain;
+      }
+      .ppt-slide [id*="chart" i], .ppt-slide .chart-container, .ppt-slide .echarts-main {
+        width: 100%; height: 100%; min-height: 160px;
+      }
+      .ppt-slide :has(> [id*="chart" i]), .ppt-slide :has(> .chart-container), .ppt-slide :has(> .echarts-main) {
+        min-height: 160px;
+      }
+      .content-safe { @apply w-[1220px] h-[660px] my-[30px] mx-auto flex flex-col overflow-hidden; }
+      .ppt-slide [class*="blur"], .ppt-slide [style*="blur"] { filter: none !important; backdrop-filter: none !important; }
+      .ppt-slide [class*="gradient"] { background-image: none !important; }
+      .ppt-slide [class*="backdrop-blur"], .ppt-slide [style*="backdrop-filter"] { backdrop-filter: none !important; }
+      .ppt-slide { font-family: "WenYuan Sans SC", "Noto Sans SC", sans-serif !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#ffffff;">
+  <div class="ppt-slide flex flex-col" type="ending">
+    <div class="content-safe justify-center items-center gap-6">
+      <i class="fa-solid fa-basketball text-[72px]" style="color:#D33941;"></i>
+      <h1 class="text-[56px] font-bold" style="color:#000000;">球场见，新同学！</h1>
+      <div class="w-[120px] h-[6px]" style="background:#D33941;"></div>
+      <p class="text-[22px]" style="color:#555757;">10 月 8 日报名截止 · 10 月 12 日正式开赛</p>
+    </div>
+  </div>
+</body>
+</html>

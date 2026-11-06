@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.digitalhumanai.top/slidagent/pptx-craft/assets/vendors/tailwind.js"></script>
+  <link href="https://cdn.digitalhumanai.top/slidagent/pptx-craft/assets/css/fonts.css" rel="stylesheet">
+  <link href="https://cdn.digitalhumanai.top/slidagent/pptx-craft/assets/vendors/fontawesome/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.digitalhumanai.top/slidagent/pptx-craft/assets/vendors/echarts.min.js"></script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .ppt-slide { @apply relative w-[1280px] h-[720px] mx-auto box-border overflow-hidden; }
+      .ppt-slide *, .ppt-slide *::before, .ppt-slide *::after { @apply box-border; max-width: 100%; }
+      .ppt-slide img, .ppt-slide video, .ppt-slide canvas, .ppt-slide svg,
+      .ppt-slide .echarts-main, .ppt-slide .chart-container, .ppt-slide [id*="chart" i] {
+        @apply max-w-full max-h-full object-contain;
+      }
+      .ppt-slide [id*="chart" i], .ppt-slide .chart-container, .ppt-slide .echarts-main {
+        width: 100%; height: 100%; min-height: 160px;
+      }
+      .ppt-slide :has(> [id*="chart" i]), .ppt-slide :has(> .chart-container), .ppt-slide :has(> .echarts-main) {
+        min-height: 160px;
+      }
+      .content-safe { @apply w-[1220px] h-[660px] my-[30px] mx-auto flex flex-col overflow-hidden; }
+      .ppt-slide [class*="blur"], .ppt-slide [style*="blur"] { filter: none !important; backdrop-filter: none !important; }
+      .ppt-slide [class*="gradient"] { background-image: none !important; }
+      .ppt-slide [class*="backdrop-blur"], .ppt-slide [style*="backdrop-filter"] { backdrop-filter: none !important; }
+      .ppt-slide { font-family: "WenYuan Sans SC", "Noto Sans SC", sans-serif !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#ffffff;">
+  <div class="ppt-slide flex flex-col" type="data">
+    <div class="content-safe">
+      <header class="h-[60px] flex-shrink-0 flex items-center gap-4">
+        <div class="w-[8px] h-[40px]" style="background:#D33941;"></div>
+        <h1 class="text-[37px] font-bold text-balance" style="color:#000000;">8 类奖项覆盖团队、个人和体育精神，每位队员都有参与奖</h1>
+      </header>
+      <main class="flex-1 min-h-0 flex flex-col gap-4 pt-4">
+        <div class="flex gap-4 flex-1 min-h-0">
+          <div class="flex-[3] min-h-0 p-4" style="border:1px solid #DDDDDD;">
+            <div id="award-chart" class="w-full h-full"></div>
+          </div>
+          <div class="flex-[2] flex flex-col gap-4">
+            <div class="p-5" style="border:1px solid #DDDDDD;"><p class="text-[22px] font-bold" style="color:#000000;">团队奖</p><p class="text-[19px] leading-[1.5]" style="color:#555757;">冠亚季军 + 最佳风尚队，共 4 支队伍</p></div>
+            <div class="p-5" style="border:1px solid #DDDDDD;"><p class="text-[22px] font-bold" style="color:#000000;">个人奖</p><p class="text-[19px] leading-[1.5]" style="color:#555757;">MVP、得分王、最佳新人、最佳啦啦队</p></div>
+            <div class="p-5" style="border:1px solid #DDDDDD;"><p class="text-[22px] font-bold" style="color:#000000;">参与奖</p><p class="text-[19px] leading-[1.5]" style="color:#555757;">所有队员获纪念队服与综测加分</p></div>
+          </div>
+        </div>
+      </main>
+      <footer class="h-[30px] flex-shrink-0 flex justify-between items-center text-[12px]" style="color:#898989;">
+        <span>来源：本次迎新杯活动策划方案</span><span>2026 级新生篮球迎新杯 · 宣传</span>
+      </footer>
+    </div>
+  </div>
+  <script>
+    var c = echarts.init(document.getElementById("award-chart"), null, { renderer: "svg" });
+    c.setOption({ animation: false, grid: { left: 110, right: 50, top: 60, bottom: 30 },
+      title: { text: "各奖项获奖名额", left: "center", textStyle: { fontSize: 18, color: "#000000" } },
+      xAxis: { type: "value", minInterval: 1, axisLabel: { fontSize: 14, color: "#555757" }, splitLine: { lineStyle: { color: "#DDDDDD" } } },
+      yAxis: { type: "category", data: ["最佳啦啦队", "最佳新人", "得分王", "MVP", "最佳风尚队", "季军", "亚军", "冠军"], axisLabel: { fontSize: 15, color: "#000000" } },
+      series: [{ type: "bar", barWidth: 22, data: [1, 3, 1, 1, 1, 1, 1, 1], itemStyle: { color: "#D33941" },
+        label: { show: true, position: "right", fontSize: 15, color: "#000000" } }] });
+  </script>
+</body>
+</html>
